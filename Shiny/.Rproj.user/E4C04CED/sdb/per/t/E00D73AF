@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "library(shiny)\n\n# fluidPage(\n#     titlePanel(\"Poker Hand Prediction\"),\n#     sidebarLayout(\n#         sidebarPanel(\n#             fileInput('file1', 'Submit!',\n#                       accept = c('text/csv', \n#                                'text/comma-separated-values,text/plain', \n#                                '.csv')),\n#             tags$hr()\n#         ),\n#         mainPanel(\n#             tableOutput('contents')\n#         )\n#     )\n# )\n\nshinyUI(fluidPage(\n    titlePanel(\"My Shiny App\"),\n    \n    sidebarLayout(\n        sidebarPanel(\n            h2(\"Installation\"),\n            p(\"Shiny is available on CRAN, so you can install it in the usual way from your R console:\"),\n            code('install.packages(\"shiny\")'),\n            br(),\n            br(),\n            br(),\n            br(),\n            img(src = \"bigorb.png\", height = 72, width = 72),\n            \"shiny is a product of \", span(\"RStudio\", style = \"color:blue\")\n        ),\n    mainPanel(\n        h1(\"Introducing Shiny\"),\n        p(\"Shiny is a new package from Rstudio that makes it \",\n          em(\"incredibly easy\"),\n          \" to build interactive web applications with R.\"),\n        br(),\n        br(),\n        p(\"For an introduction and live wxamples, visit the \",\n          a(\"shiny homepage.\",\n            href = \"http://www.rstudio.com/shiny\")),\n        br(),\n        h2(\"Features\"),\n        p(\"* Build useful web applications with only a few lines of code—no JavaScript required.\"),\n        p(\"* Shiny applications are automatically “live” in the same way that \", \n          strong(\"spreadsheets\"),\n          \" are live. Outputs change instantly as users modify inputs, without requiring a reload of the browser.\")\n    )\n)))",
+    "created" : 1477038828285.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3327514520",
+    "id" : "E00D73AF",
+    "lastKnownWriteTime" : 1477044290,
+    "last_content_update" : 1477044311503,
+    "path" : "~/Shiny/Example/ui.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

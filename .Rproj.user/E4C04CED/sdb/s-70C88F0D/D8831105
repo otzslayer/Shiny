@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "library(shiny)\nlibrary(readr)\nlibrary(caret)\n\npoker <- data.frame(read_csv(\"poker/refer.csv\"))\nwine <- data.frame(read_csv(\"wine/refer.csv\"))\n\n### Measure\nmae <- function(actual, predict){\n    length <- length(actual)\n    error <- abs(actual - predict)\n    return(sum(error) / length)\n}\n\naccuracy <- function(actual, predict){\n    return(sum(actual == predict)/length(actual))\n}\n\noptions(shiny.maxRequestSize = 30*1024^2)\n\nfunction(input, output) {\n    \n    # Dataset을 선택하는 부분\n    datasetInput <- reactive({\n        switch(input$dataset,\n               \"Poker Hand Prediction\" = poker,\n               \"Wine Quality Prediction\" = wine)\n    })\n    \n    # Submission 프리뷰\n    output$preview <- renderTable({\n        inFile <- input$file1\n        \n        if(is.null(inFile))\n            return(NULL)\n        \n        dataset <- data.frame(read_csv(inFile$datapath))\n        summary <- as.matrix(head(dataset[, 2], 10))\n        dimnames(summary) <- list(1:10, \"hand\")\n        t(summary)\n    })\n    \n    output$measureAnnotation <- reactive({\n        switch(input$dataset,\n               \"Poker Hand Prediction\" = \"Accuracy for Binary Classifer\",\n               \"Wine Quality Prediction\" = \"Mean Absolute Error\")\n    })\n  \n    output$evaluation <- reactive({\n        inFile <- input$file1\n        \n        if(is.null(inFile))\n            return(NULL)\n        \n        dataset <- data.frame(read_csv(inFile$datapath))\n        \n        switch(input$dataset,\n               \"Poker Hand Prediction\" = accuracy(datasetInput()[, 2], dataset[, 2]),\n               \"Wine Quality Prediction\" = mae(datasetInput()[, 2], dataset[, 2]))\n    })\n}\n",
+    "created" : 1477052631200.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "25700931",
+    "id" : "D8831105",
+    "lastKnownWriteTime" : 1477055641,
+    "last_content_update" : 1477055641070,
+    "path" : "~/Shiny/server.R",
+    "project_path" : "server.R",
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

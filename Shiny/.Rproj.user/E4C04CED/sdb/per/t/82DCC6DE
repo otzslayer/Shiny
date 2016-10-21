@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "library(shiny)\nlibrary(caret)\n\noptions(shiny.maxRequestSize = 30*1024^2)\n\nfunction(input, output) {\n    output$contents <- renderText({\n        \n        # input$file1 will be NULL initially. After the user selects\n        # and uploads a file, it will be a data frame with 'name',\n        # 'size', 'type', and 'datapath' columns. The 'datapath'\n        # column will contain the local filenames where the data can\n        # be found.\n        \n        inFile <- input$file1\n        \n        if (is.null(inFile))\n            return(NULL)\n        \n        submission <- read.csv(inFile$datapath)\n        answer <- read.csv(\"submission.csv\")\n        accuracy <- confusionMatrix(hand, hand)$overall[1]\n        paste0(\"Accuracy : \", accuracy)\n    })\n}\n",
+    "created" : 1477038825794.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "390992352",
+    "id" : "82DCC6DE",
+    "lastKnownWriteTime" : 1477035846,
+    "last_content_update" : 1477035846,
+    "path" : "~/Shiny/Example/server.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

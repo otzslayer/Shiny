@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "library(shiny)\n\n# fluidPage(\n#     titlePanel(\"Poker Hand Prediction\"),\n#     sidebarLayout(\n#         sidebarPanel(\n#             fileInput('file1', 'Submit!',\n#                       accept = c('text/csv', \n#                                'text/comma-separated-values,text/plain', \n#                                '.csv')),\n#             tags$hr()\n#         ),\n#         mainPanel(\n#             tableOutput('contents')\n#         )\n#     )\n# )\n\nshinyUI(fluidPage(\n    titlePanel(\"Evaluation Page for An Introduction to Machine Learning with R\"),\n    \n    sidebarLayout(\n        sidebarPanel(\n            h2(\"Choose a Dataset\"),\n            \n            selectInput(\"dataset\", \"Choose a dataset:\", \n                        choices = c(\"Poker Hand Prediction\", \"Wine Quality Prediction\")),\n            \n            helpText(\"모델 구축에 사용한 데이터를 선택해주세요.\"),\n            br(),\n            br(),\n            fileInput('file1', 'Submission',\n                      accept = c('text/csv',\n                                 'text/comma-separated-values,text/plain',\n                                 '.csv')),\n            tags$hr()\n            ),\n    mainPanel(\n        h1(\"Prediction Values\"),\n        # Vector 출력\n        tableOutput(\"preview\"),\n        p(\"위 결과는 제출한 결과의 첫 열 개의 값입니다.\"),\n        br(),\n        h2(\"Evaluation Result\"),\n        p(\"해당 모델의 평가는 다음으로 측정됩니다.\"),\n        # Measure 종류\n        verbatimTextOutput(\"measureAnnotation\"),\n        # 결과값\n        verbatimTextOutput(\"evaluation\")\n    )\n)))",
+    "created" : 1477053942179.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1138564368",
+    "id" : "1527B422",
+    "lastKnownWriteTime" : 1477055579,
+    "last_content_update" : 1477055579870,
+    "path" : "~/Shiny/ui.R",
+    "project_path" : "ui.R",
+    "properties" : {
+        "source_window_id" : "wvkj3h3c721zt"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
