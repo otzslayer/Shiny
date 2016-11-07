@@ -1,20 +1,5 @@
 library(shiny)
 
-# fluidPage(
-#     titlePanel("Poker Hand Prediction"),
-#     sidebarLayout(
-#         sidebarPanel(
-#             fileInput('file1', 'Submit!',
-#                       accept = c('text/csv', 
-#                                'text/comma-separated-values,text/plain', 
-#                                '.csv')),
-#             tags$hr()
-#         ),
-#         mainPanel(
-#             tableOutput('contents')
-#         )
-#     )
-# )
 
 shinyUI(fluidPage(
     titlePanel("Evaluation Page for An Introduction to Machine Learning with R"),
@@ -24,7 +9,13 @@ shinyUI(fluidPage(
             h2("Choose a Dataset"),
             
             selectInput("dataset", "Choose a dataset:", 
-                        choices = c("Poker Hand Prediction", "Wine Quality Prediction")),
+                        choices = c("------ Dataset -----",
+                                    "Wine Quality Prediction",
+                                    "Occupancy Detection",
+                                    "Bike Sharing Demand",
+                                    "Diabetes Diagnosis",
+                                    "Poker Hand Prediction",
+                                    "Car Mileage Prediction")),
             
             helpText("모델 구축에 사용한 데이터를 선택해주세요."),
             br(),
@@ -46,6 +37,7 @@ shinyUI(fluidPage(
         # Measure 종류
         verbatimTextOutput("measureAnnotation"),
         # 결과값
+        h5("Score"),
         verbatimTextOutput("evaluation")
     )
 )))
