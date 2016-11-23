@@ -15,20 +15,23 @@ car <- data.frame(read_csv("hw/car.csv"))           # Support Vector Machine
 mae <- function(actual, predict){
     length <- length(actual)
     error <- abs(actual - predict)
-    return(round(sum(error) / length), 6)
+    result <- round(sum(error) / length, 6)
+    return(result)
 }
 
 mse <- function(actual, predict){
     length <- length(actual)
     error <- (abs(actual - predict))^2
-    return(round(sum(error) / length), 6)
+    result <- round(sum(error) / length, 6)
+    return(result)
 }
 
 rmse <- function(actual, predict){
     length <- length(actual)
     error <- (abs(actual - predict))^2
-    rmse <- sqrt(round(sum(error) / length), 6)
-    return(rmse)
+    rmse <- sqrt(sum(error) / length)
+    result <- round(rmse, 6)
+    return(result)
 }
 
 rmsle <- function(actual, predict){
@@ -36,12 +39,15 @@ rmsle <- function(actual, predict){
     act <- log(actual + 1)
     pred <- log(predict + 1)
     error <- (abs(act - pred))^2
-    rmsle <- sqrt(round(sum(error) / length), 6)
-    return(rmsle)
+    rmsle <- sqrt(sum(error) / length)
+    result <- round(rmsle, 6)
+    return(result)
 }
 
 accuracy <- function(actual, predict){
-    return(round(sum(actual == predict)/length(actual)), 6)
+    accu <- sum(actual == predict)/length(actual)
+    result <- round(accu, 6)
+    return(result)
 }
 
 auc <- function(actual, predict){
@@ -51,7 +57,8 @@ auc <- function(actual, predict){
     roc_df <- data.frame(fpr = fpr, class = class)
     knn_roc <- ggplot(roc_df, aes(m = fpr, d = class)) + geom_roc()
     AUC <- calc_auc(knn_roc)$AUC
-    return(round(AUC), 6)
+    result <- round(AUC, 6)
+    return(result)
 }
 
 MultiLogLoss <- function(act, pred){
@@ -61,7 +68,8 @@ MultiLogLoss <- function(act, pred){
     pred = matrix(sapply( pred, function(x) min(1-eps,x)), nrow = nr)
     ll = sum(act*log(pred) + (1-act)*log(1-pred))
     ll = ll * -1/(length(act))      
-    return(round(ll), 6);
+    result <- round(ll, 6)
+    return(result);
 }
 
 ###
